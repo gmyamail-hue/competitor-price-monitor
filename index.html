@@ -10,8 +10,55 @@
   <div class="container">
     <header class="header">
       <h1>竞品官网价格监控</h1>
-      <p class="subtitle">输入网址 + 粘贴页面源码，自动识别价格并导出报表</p>
+      <p class="subtitle">手动解析价格 · 每日 5 点邮件报表 · 可随时暂停</p>
     </header>
+
+    <!-- 自动邮件监控（部署到 Vercel 后可用） -->
+    <section class="auto-section">
+      <h2 class="section-title">自动邮件监控</h2>
+      <p class="section-desc">每天北京时间 <strong>05:00</strong> 把监控网址的价格以 Excel 附件发到你的邮箱</p>
+
+      <div class="status-row">
+        <span id="status-badge" class="status-badge status-warn">加载中…</span>
+        <span id="status-detail" class="status-detail"></span>
+      </div>
+
+      <label for="pin-input">管理密码</label>
+      <input
+        type="password"
+        id="pin-input"
+        placeholder="在 Vercel 环境变量 ADMIN_PIN 中设置的密码"
+        autocomplete="off"
+      >
+      <p class="hint">用于暂停/恢复、添加网址。请勿告诉他人。</p>
+
+      <label for="monitor-url-input">加入每日监控的网址</label>
+      <div class="input-row">
+        <input
+          type="url"
+          id="monitor-url-input"
+          placeholder="https://竞品商品页地址"
+          autocomplete="off"
+        >
+        <button type="button" id="add-monitor-btn" class="btn-secondary">添加</button>
+      </div>
+
+      <ul id="monitor-url-list" class="monitor-url-list">
+        <li class="empty-tip">加载中…</li>
+      </ul>
+
+      <div class="control-row">
+        <button type="button" id="pause-btn" class="btn-danger">暂停每日邮件</button>
+        <button type="button" id="resume-btn" class="btn-secondary" disabled>恢复每日邮件</button>
+      </div>
+      <p class="hint pause-hint">暂停后：定时任务不再发邮件，可随时点「恢复」重新开启（退出机制）</p>
+
+      <button type="button" id="test-email-btn" class="btn-outline">立即发送测试邮件</button>
+    </section>
+
+    <hr class="divider" />
+
+    <h2 class="section-title">手动解析（粘贴网页源码）</h2>
 
     <!-- 步骤 1：输入网址 -->
     <section class="input-section">
@@ -98,5 +145,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="monitor.js"></script>
 </body>
 </html>

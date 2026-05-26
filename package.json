@@ -1,0 +1,10 @@
+{
+  "name": "competitor-price-monitor",
+  "version": "2.0.0",
+  "private": true,
+  "description": "竞品官网价格监控 + 每日邮件报表",
+  "dependencies": {
+    "@upstash/redis": "^1.34.3",
+    "resend": "^4.0.1"
+  }
+}
